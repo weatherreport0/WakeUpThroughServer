@@ -1,0 +1,22 @@
+[Unit]
+Description=Wake-on-LAN Telegram bot
+Wants=network-online.target
+After=network-online.target tailscaled.service
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+User=egor
+Group=egor
+WorkingDirectory=/home/egor/wakeupthroughserver
+ExecStart=/home/egor/wakeupthroughserver/venv/bin/python -u bot.py
+Restart=always
+RestartSec=10s
+TimeoutStopSec=30s
+KillSignal=SIGINT
+Environment=PYTHONUNBUFFERED=1
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

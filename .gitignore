@@ -1,6 +1,9 @@
 .env
+.env.extra
 .claude/
 __pycache__/
 *.pyc
+.coverage
+.pytest_cache/
 .venv/
 venv/
